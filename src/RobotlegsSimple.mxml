@@ -5,6 +5,7 @@
 					   xmlns:simple="simple.*"
 					   xmlns:view="simple.view.*">
 	<fx:Declarations>
+		<simple:SimpleContext contextView="{this}"/>
 	</fx:Declarations>
 	<view:ButtonContainer x="30" y="50"/>
 	<view:TextContainer x="30" y="90"/>
