@@ -1,8 +1,6 @@
 package simple.view
 {
 	import com.bit101.components.InputText;
-	import com.bit101.components.Label;
-	import com.bit101.components.Text;
 	import com.bit101.components.TextArea;
 	
 	import flash.display.Sprite;

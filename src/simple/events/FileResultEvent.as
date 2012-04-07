@@ -24,5 +24,11 @@ package simple.events
 		{
 			return _filePath;
 		}
+		
+		
+		override public function clone():Event
+		{
+			return new FileResultEvent(type, fileName, filePath, bubbles, cancelable);
+		}
 	}
 }
