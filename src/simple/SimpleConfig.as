@@ -3,6 +3,7 @@ package simple
 	import org.robotlegs.core.ICommandMap;
 	import org.robotlegs.core.IInjector;
 	import org.robotlegs.core.IMediatorMap;
+	import org.swiftsuspenders.Injector;
 	
 	import simple.controller.ChooseFileCommand;
 	import simple.controller.SetSelectedFileCommand;
@@ -19,7 +20,10 @@ package simple
 	public class SimpleConfig
 	{
 		[Inject]
-		public var injector:IInjector;
+		public var rl1Injector:IInjector;
+		
+		[Inject]
+		public var injector:Injector
 		
 		[Inject]
 		public var mediatorMap:IMediatorMap;
@@ -33,9 +37,10 @@ package simple
 			commandMap.mapEvent(SimpleAppEvent.CHOOSE_FILE, ChooseFileCommand, SimpleAppEvent);
 			commandMap.mapEvent(FileResultEvent.FILE_RESULT, SetSelectedFileCommand, FileResultEvent);
 			
-			injector.mapSingletonOf(IFileService, FileService);
+//			rl1Injector.mapSingletonOf(IFileService, FileService);
+			injector.map(IFileService).toSingleton(FileService);
 			
-			injector.mapSingleton(SimpleModel);
+			rl1Injector.mapSingleton(SimpleModel);
 			
 			mediatorMap.mapView(ButtonContainer, ButtonContainerMediator);
 			mediatorMap.mapView(TextContainer, TextContainerMediator);
