@@ -1,11 +1,9 @@
 package simple.controller
 {
-	import org.robotlegs.mvcs.Command;
-	
 	import simple.events.FileResultEvent;
 	import simple.model.SimpleModel;
 	
-	public class SetSelectedFileCommand extends Command
+	public class SetSelectedFileCommand
 	{
 		[Inject]
 		public var event:FileResultEvent;
@@ -14,7 +12,7 @@ package simple.controller
 		public var simpleModel:SimpleModel;
 		
 		
-		override public function execute():void
+		public function execute():void
 		{
 			simpleModel.fileName = event.fileName;
 			simpleModel.filePath = event.filePath;
