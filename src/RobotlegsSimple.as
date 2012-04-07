@@ -6,10 +6,11 @@ package
 	import flash.events.Event;
 	
 	import robotlegs.bender.bundles.mvcs.MVCSBundle;
+	import robotlegs.bender.extensions.migration.MigrationExtension;
 	import robotlegs.bender.framework.context.api.IContext;
 	import robotlegs.bender.framework.context.impl.Context;
 	
-	import simple.SimpleContext;
+	import simple.SimpleConfig;
 	import simple.view.ButtonContainer;
 	import simple.view.TextContainer;
 	
@@ -32,8 +33,8 @@ package
 			stage.align = StageAlign.TOP_LEFT;
 			stage.scaleMode = StageScaleMode.NO_SCALE;
 			_context = new Context()
-				.extend(MVCSBundle)
-				.configure(this);
+				.extend(MVCSBundle, MigrationExtension)
+				.configure(SimpleConfig, this);
 			
 			addEventListener(Event.ADDED_TO_STAGE, _onApplication_AddedToStageHandler);
 		}
