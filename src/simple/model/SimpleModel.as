@@ -1,11 +1,9 @@
 package simple.model
 {
-	import org.robotlegs.mvcs.Actor;
-	
-	import simple.events.SimpleAppEvent;
+	import simple.base.BaseActor;
 	import simple.events.SimpleModelEvent;
 	
-	public class SimpleModel extends Actor
+	public class SimpleModel extends BaseActor
 	{
 		private var _fileName:String;
 		public function get fileName():String
