@@ -1,14 +1,16 @@
 package simple.service
 {
 	import flash.events.Event;
+	import flash.events.IEventDispatcher;
 	import flash.filesystem.File;
-	
-	import org.robotlegs.mvcs.Actor;
 	
 	import simple.events.FileResultEvent;
 	
-	public class FileService extends Actor implements IFileService
+	public class FileService implements IFileService
 	{
+		[Inject]
+		public var eventDispatcher:IEventDispatcher;
+		
 		private var _file:File;
 		
 		public function promptToChooseFile():void
@@ -21,7 +23,7 @@ package simple.service
 		
 		private function onFileSelect(event:Event):void
 		{
-			dispatch(new FileResultEvent(FileResultEvent.FILE_RESULT, _file.name, _file.nativePath));
+			eventDispatcher.dispatchEvent(new FileResultEvent(FileResultEvent.FILE_RESULT, _file.name, _file.nativePath));
 		}
 	}
 }
