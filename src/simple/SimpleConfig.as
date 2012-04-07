@@ -40,7 +40,8 @@ package simple
 //			rl1Injector.mapSingletonOf(IFileService, FileService);
 			injector.map(IFileService).toSingleton(FileService);
 			
-			rl1Injector.mapSingleton(SimpleModel);
+//			rl1Injector.mapSingleton(SimpleModel);
+			injector.map(SimpleModel).asSingleton();
 			
 			mediatorMap.mapView(ButtonContainer, ButtonContainerMediator);
 			mediatorMap.mapView(TextContainer, TextContainerMediator);
