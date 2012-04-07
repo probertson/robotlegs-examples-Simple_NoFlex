@@ -1,7 +1,6 @@
 package simple
 {
 	import org.robotlegs.core.ICommandMap;
-	import org.robotlegs.core.IInjector;
 	import org.robotlegs.core.IMediatorMap;
 	import org.swiftsuspenders.Injector;
 	
@@ -19,9 +18,6 @@ package simple
 	
 	public class SimpleConfig
 	{
-		[Inject]
-		public var rl1Injector:IInjector;
-		
 		[Inject]
 		public var injector:Injector
 		
