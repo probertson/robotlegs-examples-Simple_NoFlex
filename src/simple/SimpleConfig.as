@@ -4,6 +4,8 @@ package simple
 	import org.robotlegs.core.IMediatorMap;
 	import org.swiftsuspenders.Injector;
 	
+	import robotlegs.bender.extensions.eventCommandMap.api.IEventCommandMap;
+	
 	import simple.controller.ChooseFileCommand;
 	import simple.controller.SetSelectedFileCommand;
 	import simple.events.FileResultEvent;
@@ -25,13 +27,17 @@ package simple
 		public var mediatorMap:IMediatorMap;
 		
 		[Inject]
-		public var commandMap:ICommandMap;
+		public var rl1CommandMap:ICommandMap;
+		
+		[Inject]
+		public var commandMap:IEventCommandMap;
 		
 		[PostConstruct]
 		public function startup():void
 		{
-			commandMap.mapEvent(SimpleAppEvent.CHOOSE_FILE, ChooseFileCommand, SimpleAppEvent);
-			commandMap.mapEvent(FileResultEvent.FILE_RESULT, SetSelectedFileCommand, FileResultEvent);
+//			rl1CommandMap.mapEvent(SimpleAppEvent.CHOOSE_FILE, ChooseFileCommand, SimpleAppEvent);
+			commandMap.map(SimpleAppEvent.CHOOSE_FILE, SimpleAppEvent).toCommand(ChooseFileCommand);
+			rl1CommandMap.mapEvent(FileResultEvent.FILE_RESULT, SetSelectedFileCommand, FileResultEvent);
 			
 //			rl1Injector.mapSingletonOf(IFileService, FileService);
 			injector.map(IFileService).toSingleton(FileService);
