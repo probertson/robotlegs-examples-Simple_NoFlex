@@ -1,12 +1,12 @@
 package simple.view
 {
-	import org.robotlegs.mvcs.Mediator;
+	import robotlegs.bender.bundles.mvcs.impl.Mediator;
 	
 	import simple.events.SimpleAppEvent;
 	
 	public class ButtonContainerMediator extends Mediator
 	{
-		override public function onRegister():void
+		override public function initialize():void
 		{
 			addViewListener(SimpleAppEvent.CHOOSE_FILE, dispatch, SimpleAppEvent);
 		}

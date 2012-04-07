@@ -1,6 +1,6 @@
 package simple.view
 {
-	import org.robotlegs.mvcs.Mediator;
+	import robotlegs.bender.bundles.mvcs.impl.Mediator;
 	
 	import simple.events.SimpleModelEvent;
 	
@@ -9,8 +9,7 @@ package simple.view
 		[Inject]
 		public var view:TextContainer;
 		
-		
-		override public function onRegister():void
+		override public function initialize():void
 		{
 			addContextListener(SimpleModelEvent.FILE_NAME_CHANGE, onFileNameChange, SimpleModelEvent);
 			addContextListener(SimpleModelEvent.FILE_PATH_CHANGE, onFilePathChange, SimpleModelEvent);

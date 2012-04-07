@@ -1,10 +1,9 @@
 package simple
 {
-	import org.robotlegs.core.ICommandMap;
-	import org.robotlegs.core.IMediatorMap;
 	import org.swiftsuspenders.Injector;
 	
 	import robotlegs.bender.extensions.eventCommandMap.api.IEventCommandMap;
+	import robotlegs.bender.extensions.mediatorMap.api.IMediatorMap;
 	
 	import simple.controller.ChooseFileCommand;
 	import simple.controller.SetSelectedFileCommand;
@@ -27,9 +26,6 @@ package simple
 		public var mediatorMap:IMediatorMap;
 		
 		[Inject]
-		public var rl1CommandMap:ICommandMap;
-		
-		[Inject]
 		public var commandMap:IEventCommandMap;
 		
 		[PostConstruct]
@@ -46,8 +42,10 @@ package simple
 //			rl1Injector.mapSingleton(SimpleModel);
 			injector.map(SimpleModel).asSingleton();
 			
-			mediatorMap.mapView(ButtonContainer, ButtonContainerMediator);
-			mediatorMap.mapView(TextContainer, TextContainerMediator);
+//			mediatorMap.mapView(ButtonContainer, ButtonContainerMediator);
+			mediatorMap.mapView(ButtonContainer).toMediator(ButtonContainerMediator);
+//			mediatorMap.mapView(TextContainer, TextContainerMediator);
+			mediatorMap.mapView(TextContainer).toMediator(TextContainerMediator);
 		}
 	}
 }
