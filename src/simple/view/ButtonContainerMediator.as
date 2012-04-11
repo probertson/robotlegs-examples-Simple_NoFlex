@@ -1,6 +1,6 @@
 package simple.view
 {
-	import robotlegs.bender.bundles.mvcs.impl.Mediator;
+	import robotlegs.bender.bundles.mvcs.Mediator;
 	
 	import simple.events.SimpleAppEvent;
 	

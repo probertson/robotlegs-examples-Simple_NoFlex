@@ -1,9 +1,11 @@
 package simple.controller
 {
+	import robotlegs.bender.bundles.mvcs.Command;
+	
 	import simple.events.FileResultEvent;
 	import simple.model.SimpleModel;
 	
-	public class SetSelectedFileCommand
+	public class SetSelectedFileCommand extends Command
 	{
 		[Inject]
 		public var event:FileResultEvent;
@@ -12,7 +14,7 @@ package simple.controller
 		public var simpleModel:SimpleModel;
 		
 		
-		public function execute():void
+		override public function execute():void
 		{
 			simpleModel.fileName = event.fileName;
 			simpleModel.filePath = event.filePath;
