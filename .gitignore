@@ -1,3 +1,13 @@
-.settings/org.eclipse.core.resources.prefs
-bin-debug/*
-.DS_Store
+# Build and Release Folders
+bin/
+bin-debug/
+bin-release/
+
+.settings/
+.project
+.actionScriptProperties
+.flexProperties
+
+# Project files, i.e. `.project`, `.actionScriptProperties` and `.flexProperties`
+# should NOT be excluded as they contain compiler settings and other important
+# information for Eclipse / Flash Builder. 
