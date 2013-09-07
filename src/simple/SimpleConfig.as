@@ -4,6 +4,8 @@ package simple
 	
 	import robotlegs.bender.extensions.eventCommandMap.api.IEventCommandMap;
 	import robotlegs.bender.extensions.mediatorMap.api.IMediatorMap;
+	import robotlegs.bender.framework.api.IConfig;
+	import robotlegs.bender.framework.api.IInjector;
 	
 	import simple.controller.ChooseFileCommand;
 	import simple.controller.SetSelectedFileCommand;
@@ -17,10 +19,13 @@ package simple
 	import simple.view.TextContainer;
 	import simple.view.TextContainerMediator;
 	
-	public class SimpleConfig
+	//public class SimpleConfig
+	public class SimpleConfig implements IConfig
 	{
+		/*[Inject]
+		public var injector:Injector*/
 		[Inject]
-		public var injector:Injector
+		public var injector:IInjector;
 		
 		[Inject]
 		public var mediatorMap:IMediatorMap;
@@ -28,7 +33,7 @@ package simple
 		[Inject]
 		public var commandMap:IEventCommandMap;
 		
-		[PostConstruct]
+		/*[PostConstruct]
 		public function startup():void
 		{
 			commandMap.map(SimpleAppEvent.CHOOSE_FILE, SimpleAppEvent).toCommand(ChooseFileCommand);
@@ -40,6 +45,19 @@ package simple
 			
 			mediatorMap.mapView(ButtonContainer).toMediator(ButtonContainerMediator);
 			mediatorMap.mapView(TextContainer).toMediator(TextContainerMediator);
+		}*/
+		
+		public function configure():void
+		{
+			commandMap.map(SimpleAppEvent.CHOOSE_FILE, SimpleAppEvent).toCommand(ChooseFileCommand);
+			commandMap.map(FileResultEvent.FILE_RESULT, FileResultEvent).toCommand(SetSelectedFileCommand);
+			
+			injector.map(IFileService).toSingleton(FileService);
+			
+			injector.map(SimpleModel).asSingleton();
+			
+			mediatorMap.map(ButtonContainer).toMediator(ButtonContainerMediator);
+			mediatorMap.map(TextContainer).toMediator(TextContainerMediator);
 		}
 	}
 }
